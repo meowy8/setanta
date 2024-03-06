@@ -1,15 +1,22 @@
+"use client";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 
-const NavBar = () => {
+const Sidebar = ({
+  toggleSidebar,
+  isOpen,
+}: {
+  toggleSidebar: () => void;
+  isOpen: boolean;
+}) => {
   return (
-    <nav className="flex justify-between items-center p-4 fixed w-full">
-      <div>
+    <aside>
+      <button onClick={toggleSidebar} className="">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
-          strokeWidth={.9}
+          strokeWidth={0.9}
           stroke="currentColor"
           className="w-10 h-10"
         >
@@ -19,9 +26,78 @@ const NavBar = () => {
             d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
           />
         </svg>
-      </div>
+      </button>
+      <section
+        className={`fixed ovo left-0 top-0 h-full w-64 bg-white text-black z-10 ${
+          isOpen ? "translate-x-0" : "-translate-x-full"
+        } transition-transform duration-300 ease-in-out border-r-2 border-black`}
+      >
+        <div className="flex justify-between items-center p-4">
+          <button
+            onClick={toggleSidebar}
+            className="text-black focus:outline-none"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </button>
+        </div>
+        <ul className="px-4 py-10 text-black font-semibold w-44">
+          <li
+            onClick={toggleSidebar}
+            className="px-4 py-2 cursor-pointer rounded-lg"
+          >
+            Women
+          </li>
+          <li
+            onClick={toggleSidebar}
+            className="px-4 py-2 cursor-pointer rounded-lg"
+          >
+            Men
+          </li>
+          <li
+            onClick={toggleSidebar}
+            className="px-4 py-2 cursor-pointer rounded-lg"
+          >
+            Accessories
+          </li>
+          <li
+            onClick={toggleSidebar}
+            className="px-4 py-2 cursor-pointer rounded-lg"
+          >
+            Home
+          </li>
+        </ul>
+      </section>
+    </aside>
+  );
+};
+
+const NavBar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleSidebar = () => {
+    setIsOpen(!isOpen);
+  };
+
+  return (
+    <nav className="flex justify-between items-center p-4 fixed w-full">
+      <Sidebar toggleSidebar={toggleSidebar} isOpen={isOpen} />
       <div className="flex items-center gap-4">
-        <Link href={"/"} className="slackside-one text-[36px]">Setanta</Link>
+        <Link href={"/"} className="slackside-one text-[36px] mb-2">
+          Setanta
+        </Link>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"

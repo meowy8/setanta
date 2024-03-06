@@ -60,15 +60,15 @@ const FooterSection = () => {
   return (
     <section
       id="footer"
-      className="h-screen w-full flex flex-col items-center justify-center bg-white"
+      className=" h-screen w-full flex flex-col items-center justify-center bg-white"
     >
-      <div className="flex flex-col gap-8">
-        <h1 className="text-5xl relative left-1/3">Women</h1>
-        <h1 className="text-5xl relative">Men</h1>
+      <div className="relative top-20 flex flex-col gap-8">
+        <h1 className="text-5xl relative left-1/3 ">Women</h1>
+        <h1 className="text-5xl relative right-1/3">Men</h1>
         <h1 className="text-5xl relative left-1/3">Accessories</h1>
-        <h1 className="text-5xl">Home</h1>
+        <h1 className="text-5xl relative right-1/3">Home</h1>
       </div>
-      <footer className="mt-96 flex gap-6">
+      <footer className="mt-96 flex gap-6 relative top-[150px]">
         <span>Cookie Settings</span>
         <span>Terms and Conditions</span>
         <span>Privacy Policy</span>
@@ -79,13 +79,15 @@ const FooterSection = () => {
 
 export default function Home() {
   return (
-    <main className="overflow-hidden relative ovo">
+    <main className="overflow-hidden relative">
       <NavBar />
-      <WomenSection />
-      <MenSection />
-      <AccessoriesSection />
-      <HomeSection />
-      <FooterSection />
+      <div className="ovo">
+        <WomenSection />
+        <MenSection />
+        <AccessoriesSection />
+        <HomeSection />
+        <FooterSection />
+      </div>
     </main>
   );
 }
