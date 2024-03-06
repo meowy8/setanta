@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 const NavBar = () => {
@@ -20,7 +21,7 @@ const NavBar = () => {
         </svg>
       </div>
       <div className="flex items-center gap-4">
-        <span className="slackside-one text-[36px]">Setanta</span>
+        <Link href={"/"} className="slackside-one text-[36px]">Setanta</Link>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"

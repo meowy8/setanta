@@ -7,6 +7,15 @@
   src: url("/fonts/Slackside_One/SlacksideOne-Regular.ttf") format("truetype");
 }
 
+@font-face {
+  font-family: "Ovo";
+  src: url("/fonts/Ovo/Ovo-Regular.ttf") format("truetype");
+}
+
 .slackside-one {
   font-family: "Slackside One";
+}
+
+.ovo {
+  font-family: "Ovo";
 }
