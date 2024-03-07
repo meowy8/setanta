@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const Sidebar = ({
   toggleSidebar,
@@ -11,7 +11,7 @@ const Sidebar = ({
 }) => {
   return (
     <aside>
-      <button onClick={toggleSidebar} className="">
+      <button onClick={toggleSidebar} className="flex justify-center items-center">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -58,25 +58,25 @@ const Sidebar = ({
             onClick={toggleSidebar}
             className="px-4 py-2 cursor-pointer rounded-lg"
           >
-            Women
+            <Link href={"/women"}>Women</Link>
           </li>
           <li
             onClick={toggleSidebar}
             className="px-4 py-2 cursor-pointer rounded-lg"
           >
-            Men
+            <Link href={"/men"}>Men</Link>
           </li>
           <li
             onClick={toggleSidebar}
             className="px-4 py-2 cursor-pointer rounded-lg"
           >
-            Accessories
+            <Link href={"/accessories"}>Accessories</Link>
           </li>
           <li
             onClick={toggleSidebar}
             className="px-4 py-2 cursor-pointer rounded-lg"
           >
-            Home
+            <Link href={"/home"}>Home</Link>
           </li>
         </ul>
       </section>
@@ -86,13 +86,39 @@ const Sidebar = ({
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [prevScrollPos, setPrevScrollPos] = useState(0);
+  const [transparency, setTransparency] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollPos = window.scrollY;
+      const scrollDirection = currentScrollPos > prevScrollPos ? "down" : "up";
+      setPrevScrollPos(currentScrollPos);
+
+      if (scrollDirection === "down" && transparency) {
+        setTransparency(false);
+      } else if (scrollDirection === "up" && !transparency) {
+        setTransparency(true);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [transparency, prevScrollPos]);
 
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
   };
 
   return (
-    <nav className="flex justify-between items-center p-4 fixed w-full">
+    <nav
+      className={`flex justify-between items-center p-2 fixed w-full transition-colors duration-300 ease-in-out ${
+        transparency ? "bg-white" : "bg-transparent"
+      }`}
+    >
       <Sidebar toggleSidebar={toggleSidebar} isOpen={isOpen} />
       <div className="flex items-center gap-4">
         <Link href={"/"} className="slackside-one text-[36px] mb-2">

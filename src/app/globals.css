@@ -12,10 +12,20 @@
   src: url("/fonts/Ovo/Ovo-Regular.ttf") format("truetype");
 }
 
+@font-face {
+  font-family: "Roboto Mono";
+  src: url("/fonts/Roboto_Mono/RobotoMono-VariableFont_wght.ttf")
+    format("truetype");
+}
+
 .slackside-one {
   font-family: "Slackside One";
 }
 
 .ovo {
   font-family: "Ovo";
+}
+
+.roboto-mono {
+  font-family: "Roboto Mono";
 }

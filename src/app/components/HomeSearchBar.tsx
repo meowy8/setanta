@@ -3,7 +3,7 @@ import React from "react";
 const HomeSearchBar = () => {
   return (
     <div className="fixed bottom-8 pb-10 w-full flex justify-center">
-      <div className="w-4/5 h-8 flex items-center">
+      <div className="w-4/5 h-8 flex items-center backdrop-blur-sm">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -20,7 +20,7 @@ const HomeSearchBar = () => {
         </svg>
         <input
           type="text"
-          className="w-full h-full bg-black/30 rounded-md placeholder:text-slate-200/50 p-2 pl-8 outline-none"
+          className="w-full h-full bg-white/20 rounded-md placeholder:text-black/60 p-2 pl-8 outline-none focus:bg-white"
           placeholder="Search"
         />
       </div>

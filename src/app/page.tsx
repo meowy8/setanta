@@ -92,7 +92,6 @@ const FooterSection = () => {
 export default function Home() {
   return (
     <main className="overflow-hidden relative">
-      <NavBar />
       <HomeSearchBar />
       <div className="ovo">
         <WomenSection />
