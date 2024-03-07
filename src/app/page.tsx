@@ -1,3 +1,4 @@
+import HomeSearchBar from "./components/HomeSearchBar";
 import NavBar from "./components/NavBar";
 
 const WomenSection = () => {
@@ -81,6 +82,7 @@ export default function Home() {
   return (
     <main className="overflow-hidden relative">
       <NavBar />
+      <HomeSearchBar />
       <div className="ovo">
         <WomenSection />
         <MenSection />

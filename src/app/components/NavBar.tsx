@@ -28,7 +28,7 @@ const Sidebar = ({
         </svg>
       </button>
       <section
-        className={`fixed ovo left-0 top-0 h-full w-64 bg-white text-black z-10 ${
+        className={`fixed ovo left-0 top-0 h-full w-64 bg-white text-black z-100 ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         } transition-transform duration-300 ease-in-out border-r-2 border-black`}
       >
