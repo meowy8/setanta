@@ -1,6 +1,5 @@
 import Link from "next/link";
 import HomeSearchBar from "./components/HomeSearchBar";
-import NavBar from "./components/NavBar";
 
 const WomenSection = () => {
   return (
@@ -75,10 +74,18 @@ const FooterSection = () => {
       className=" h-screen w-full flex flex-col items-center justify-center bg-white"
     >
       <div className="relative top-20 flex flex-col gap-8">
-        <Link href="/women" className="text-5xl relative left-1/3 ">Women</Link>
-        <Link href="/men" className="text-5xl relative right-1/3">Men</Link>
-        <Link href="/accessories" className="text-5xl relative left-1/3">Accessories</Link>
-        <Link href="/home" className="text-5xl relative right-1/3">Home</Link>
+        <Link href="/women" className="text-5xl relative left-1/3 ">
+          Women
+        </Link>
+        <Link href="/men" className="text-5xl relative right-1/3">
+          Men
+        </Link>
+        <Link href="/accessories" className="text-5xl relative left-1/3">
+          Accessories
+        </Link>
+        <Link href="/home" className="text-5xl relative right-1/3">
+          Home
+        </Link>
       </div>
       <footer className="mt-96 flex gap-6 relative top-[150px]">
         <span>Cookie Settings</span>
@@ -89,7 +96,7 @@ const FooterSection = () => {
   );
 };
 
-export default function Home() {
+export default function HomePage() {
   return (
     <main className="overflow-hidden relative">
       <HomeSearchBar />
