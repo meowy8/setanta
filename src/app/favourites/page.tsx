@@ -1,11 +1,13 @@
 import React from "react";
-import FavouritesCard from "../components/FavouritesCard";
+import FavouritesItem from "../components/FavouritesItem";
 
 const Favourites = () => {
   return (
     <main className="relative top-20 ">
       <h1 className="ovo m-2 text-3xl">Favourites</h1>
-      <FavouritesCard />
+      <FavouritesItem />
+      <FavouritesItem />
+      <FavouritesItem />
     </main>
   );
 };

@@ -2,10 +2,10 @@ import Image from "next/image";
 import React from "react";
 import DeleteFavBtn from "./DeleteFavBtn";
 
-const FavouritesCard = () => {
+const FavouritesItem = () => {
   return (
     <div className="flex flex-col items-center">
-      <div className="flex justify-between h-96 w-screen roboto-mono">
+      <div className="flex justify-between h-80 w-screen roboto-mono">
         <div className="h-full overflow-hidden">
           <Image
             src="/images/pexels-ksenia-chernaya-11741419.jpg"
@@ -30,9 +30,9 @@ const FavouritesCard = () => {
           </div>
         </div>
       </div>
-      <hr className="w-4/5 h-[2px] bg-black" />
+      <hr className="w-4/5 h-[2px] bg-black m-3" />
     </div>
   );
 };
 
-export default FavouritesCard;
+export default FavouritesItem;
