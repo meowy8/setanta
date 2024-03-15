@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 const BasketFooter = () => {
@@ -8,7 +9,10 @@ const BasketFooter = () => {
           <span>Total</span>
           <span>£££</span>
         </div>
-        <button className="bg-black text-white p-4 rounded-lg">Checkout</button>
+        {/* this will be faded when no items are in basket */}
+        <Link href={"/checkout"} className="bg-black text-white p-4 rounded-lg">
+          Checkout
+        </Link>
       </div>
     </footer>
   );
