@@ -1,9 +1,17 @@
 import Image from "next/image";
 import React from "react";
 import DeleteFavBtn from "./DeleteFavBtn";
-import { Product } from "../../../interfaces";
+import { FavouritesItemType } from "../../../interfaces";
+import AddToBasketBtn from "./AddToBasketBtn";
 
-const FavouritesItem = ({ name, price, imageUrl, id, removeFromFavourites } : Product) => {
+const FavouritesItem = ({
+  name,
+  price,
+  imageUrl,
+  id,
+  description,
+  removeFromFavourites,
+}: FavouritesItemType) => {
   return (
     <div className="flex flex-col items-center">
       <div className="flex justify-between h-80 w-screen roboto-mono">
@@ -23,11 +31,20 @@ const FavouritesItem = ({ name, price, imageUrl, id, removeFromFavourites } : Pr
               <span>£{price}</span>
             </div>
             <div>
-              <DeleteFavBtn id={id} removeFromFavourites={removeFromFavourites}/>
+              <DeleteFavBtn
+                id={id}
+                removeFromFavourites={removeFromFavourites}
+              />
             </div>
           </div>
           <div className="flex items-end justify-end h-full">
-            <button>Add to Basket</button>
+            <AddToBasketBtn
+              name={name}
+              price={price}
+              id={id}
+              imageUrl={imageUrl}
+              description={description}
+            />
           </div>
         </div>
       </div>

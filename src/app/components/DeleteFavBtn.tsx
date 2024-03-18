@@ -1,14 +1,14 @@
 import React from "react";
-import { Product } from "../../../interfaces";
+import { DeleteFavourite } from "../../../interfaces";
 
-const DeleteFavBtn = ({ id, removeFromFavourites }: { id: number, removeFromFavourites: (id: number) => void }) => {
+const DeleteFavBtn = ({ id, removeFromFavourites }: DeleteFavourite) => {
   return (
-    <button onClick={() => removeFromFavourites(id)}>
+    <button onClick={() => removeFromFavourites?.(id)}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         viewBox="0 0 24 24"
-        strokeWidth={.7}
+        strokeWidth={0.7}
         stroke="currentColor"
         className="w-12 h-12"
       >

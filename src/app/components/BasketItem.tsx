@@ -1,16 +1,36 @@
+"use client";
 import Image from "next/image";
-import React from "react";
-import DeleteFavBtn from "./DeleteFavBtn";
+import React, { useState } from "react";
 import QuantitySelector from "./QuantitySelector";
+import DeleteFromBasketBtn from "./DeleteFromBasketBtn";
+import { BasketItemType } from "../../../interfaces";
 
-const BasketItem = () => {
+const BasketItem = ({
+  name,
+  price,
+  imageUrl,
+  id,
+  removeFromBasket,
+}: BasketItemType) => {
+  const [quantity, setQuantity] = useState<number>(1);
+
+  const handleIncrement = () => {
+    setQuantity((prev) => prev + 1);
+  };
+
+  const handleDecrement = () => {
+    if (quantity > 1) {
+      setQuantity((prev) => prev - 1);
+    }
+  };
+
   return (
     <div className="flex flex-col items-center">
       <div className="flex justify-between h-80 w-screen roboto-mono">
         <div className="h-full overflow-hidden">
           <Image
-            src="/images/pexels-ksenia-chernaya-11741419.jpg"
-            alt=""
+            src={imageUrl}
+            alt={name}
             height={250}
             width={250}
             className="object-cover"
@@ -19,15 +39,22 @@ const BasketItem = () => {
         <div className="flex flex-col p-4 w-72">
           <div className="flex justify-between ">
             <div className="flex flex-col">
-              <span>Product Name</span>
-              <span>£££</span>
+              <span>{name}</span>
+              <span>£{price}</span>
             </div>
             <div>
-              <DeleteFavBtn />
+              <DeleteFromBasketBtn
+                id={id}
+                removeFromBasket={removeFromBasket}
+              />
             </div>
           </div>
           <div className="flex items-end justify-end h-full">
-            <QuantitySelector />
+            <QuantitySelector
+              handleIncrement={handleIncrement}
+              handleDecrement={handleDecrement}
+              quantity={quantity}
+            />
           </div>
         </div>
       </div>

@@ -9,6 +9,17 @@ const HomePage = () => {
   const [homeData, setHomeData] = useState<Product[]>([]);
 
   useEffect(() => {
+    const fetchFavourites = async () => {
+      const querySnapshot = await getDocs(collection(db, "favorites"));
+      const favoriteIds = querySnapshot.docs.map((doc) => doc.id);
+
+      localStorage.setItem("favorites", JSON.stringify(favoriteIds));
+    };
+
+    fetchFavourites();
+  }, []);
+
+  useEffect(() => {
     const fetchHomeData = async () => {
       const collectionRef = collection(db, "categories");
       const q = query(collectionRef, where("id", "==", 4));
@@ -43,6 +54,8 @@ const HomePage = () => {
               key={product.id}
               price={product.price}
               imageUrl={product.imageUrl}
+              id={product.id}
+              description={product.description}
             />
           ))}
       </div>
