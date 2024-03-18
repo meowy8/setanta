@@ -1,8 +1,9 @@
 import React from "react";
+import { Product } from "../../../interfaces";
 
-const DeleteFavBtn = () => {
+const DeleteFavBtn = ({ id, removeFromFavourites }: { id: number, removeFromFavourites: (id: number) => void }) => {
   return (
-    <button>
+    <button onClick={() => removeFromFavourites(id)}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"

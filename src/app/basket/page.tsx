@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import BasketItem from "../components/BasketItem";
 import BasketFooter from "../components/BasketFooter";

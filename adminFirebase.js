@@ -68,7 +68,7 @@ admin.initializeApp({
 });
 
 const db = admin.firestore();
-const collectionRef = db.collection("categories");
+const collectionRef = db.collection("basket");
 
 categories.forEach(async (category) => {
   try {

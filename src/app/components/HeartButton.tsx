@@ -1,15 +1,53 @@
-import React from "react";
+"use client";
+import { deleteDoc, doc, setDoc } from "firebase/firestore";
+import React, { useEffect, useState } from "react";
+import { db } from "../firebase";
+import { Product } from "../../../interfaces";
 
-const HeartButton = () => {
+const HeartButton = ({ id, imageUrl, name, price, description }: Product) => {
+  const [liked, setLiked] = useState(false);
+
+  useEffect(() => {
+    console.log("id", id);
+  }, [id]);
+
+  const addToFavourites = async () => {
+    const docRef = doc(db, "favourites", `${id}`);
+    await setDoc(docRef, {
+      id: id,
+      imageUrl: imageUrl,
+      name: name,
+      price: price,
+      description: description,
+    });
+    setLiked(true);
+  };
+
+  const removeFromFavourites = async () => {
+    const docRef = doc(db, "favourites", `${id}`);
+    await deleteDoc(docRef);
+    setLiked(false);
+  };
+
+  const handleClick = () => {
+    if (liked) {
+      removeFromFavourites();
+    } else {
+      addToFavourites();
+    }
+  };
+
   return (
-    <button>
+    <button onClick={handleClick}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         viewBox="0 0 24 24"
         strokeWidth={1.5}
         stroke="currentColor"
-        className="w-6 h-6 fill-none hover:fill-black"
+        className={`w-6 h-6 ${
+          liked ? `fill-black` : `fill-none`
+        } hover:fill-black`}
       >
         <path
           strokeLinecap="round"
