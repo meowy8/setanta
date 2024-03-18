@@ -1,5 +1,8 @@
 import Link from "next/link";
 import HomeSearchBar from "./components/HomeSearchBar";
+import { useEffect } from "react";
+import { db } from "./firebase";
+import { collection, doc, setDoc } from "firebase/firestore";
 
 const WomenSection = () => {
   return (
@@ -97,6 +100,7 @@ const FooterSection = () => {
 };
 
 export default function HomePage() {
+
   return (
     <main className="overflow-hidden relative">
       <HomeSearchBar />

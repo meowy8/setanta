@@ -1,0 +1,40 @@
+1. Products
+   - id (primary key)
+   - name
+   - description
+   - price
+   - category_id (foreign key referencing Categories)
+   - image_url
+
+2. Categories
+   - id (primary key)
+   - name
+
+3. Customers
+   - id (primary key)
+   - name
+   - email
+   - password
+   - address
+   - phone_number
+
+4. Orders
+   - id (primary key)
+   - customer_id (foreign key referencing Customers)
+   - order_date
+   - total_amount
+   - status (e.g., Pending, Shipped, Delivered)
+
+5. Order_Items
+   - id (primary key)
+   - order_id (foreign key referencing Orders)
+   - product_id (foreign key referencing Products)
+   - quantity
+   - price_per_unit
+
+6. Reviews
+   - id (primary key)
+   - product_id (foreign key referencing Products)
+   - customer_id (foreign key referencing Customers)
+   - rating
+   - comment

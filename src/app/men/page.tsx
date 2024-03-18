@@ -5,13 +5,13 @@ import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "../firebase";
 import { Product } from "../../../interfaces";
 
-const WomenPage = () => {
-  const [womenData, setWomenData] = useState<Product[]>([]);
+const MenPage = () => {
+  const [menData, setMenData] = useState<Product[]>([]);
 
   useEffect(() => {
-    const fetchWomenData = async () => {
+    const fetchMenData = async () => {
       const collectionRef = collection(db, "categories");
-      const q = query(collectionRef, where("id", "==", 2));
+      const q = query(collectionRef, where("id", "==", 1));
 
       const querySnap = await getDocs(q);
       const newData: Product[] = [];
@@ -25,15 +25,15 @@ const WomenPage = () => {
         }
       });
 
-      setWomenData([...newData]);
+      setMenData([...newData]);
     };
 
-    fetchWomenData();
+    fetchMenData();
   }, []);
 
   return (
     <main className="relative top-20 ">
-      <h1 className="ovo m-2 text-3xl">Women</h1>
+      <h1 className="ovo m-2 text-3xl">Men</h1>
       <div className="roboto-mono flex gap-4 p-2">
         <button className="border border-black py-1 px-4 hover:bg-black hover:text-white">
           VIEW ALL
@@ -49,8 +49,8 @@ const WomenPage = () => {
         </button>
       </div>
       <div className="grid grid-cols-2 justify-center">
-        {womenData.length > 0 &&
-          womenData.map((product: Product) => (
+        {menData.length > 0 &&
+          menData.map((product: Product) => (
             <ProductCard
               name={product.name}
               key={product.id}
@@ -63,4 +63,4 @@ const WomenPage = () => {
   );
 };
 
-export default WomenPage;
+export default MenPage;
