@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import QuantitySelector from "./QuantitySelector";
 import DeleteFromBasketBtn from "./DeleteFromBasketBtn";
 import { BasketItemType } from "../../../interfaces";
+import Link from "next/link";
 
 const BasketItem = ({
   name,
@@ -37,7 +38,7 @@ const BasketItem = ({
   return (
     <div className="flex flex-col items-center">
       <div className="flex justify-between h-80 w-screen roboto-mono">
-        <div className="h-full overflow-hidden">
+        <Link href={`/${id}/${name}`} className="h-full overflow-hidden">
           <Image
             src={imageUrl}
             alt={name}
@@ -45,11 +46,11 @@ const BasketItem = ({
             width={250}
             className="object-cover"
           />
-        </div>
+        </Link>
         <div className="flex flex-col p-4 w-72">
           <div className="flex justify-between ">
             <div className="flex flex-col">
-              <span>{name}</span>
+              <Link href={`/${id}/${name}`}>{name}</Link>
               <span>£{newPrice}</span>
             </div>
             <div>

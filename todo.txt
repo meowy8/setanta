@@ -1,7 +1,7 @@
 Priority Tasks - 
+- create product detail pages
 - add more data
-- display if an item has been added to basket 
-- add basket button to product card
 
 Other Tasks - 
 - make sure favourited items display a filled in heart even after clearing site data
+- change name in url for product detail page to be hyphenated

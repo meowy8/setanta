@@ -118,7 +118,7 @@ const NavBar = () => {
 
   return (
     <nav
-      className={`flex justify-between items-center p-2 fixed w-full transition-colors duration-300 ease-in-out z-10 ${
+      className={`flex justify-between items-center p-2 fixed top-0 w-full transition-colors duration-300 ease-in-out z-10 ${
         transparency ? "bg-white" : "bg-transparent"
       }`}
     >

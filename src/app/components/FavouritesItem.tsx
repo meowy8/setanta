@@ -1,10 +1,12 @@
+"use client";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import DeleteFavBtn from "./DeleteFavBtn";
 import { FavouritesItemType } from "../../../interfaces";
 import AddToBasketBtn from "./AddToBasketBtn";
 import { doc, setDoc } from "firebase/firestore";
 import { db } from "../firebase";
+import Link from "next/link";
 
 const FavouritesItem = ({
   name,
@@ -17,7 +19,8 @@ const FavouritesItem = ({
   const handleClick = () => {
     addToBasket();
     removeFromFavourites(id);
-  }
+  };
+
   const addToBasket = async () => {
     const docRef = doc(db, "basket", `${id}`);
     await setDoc(docRef, {
@@ -28,10 +31,11 @@ const FavouritesItem = ({
       description: description,
     });
   };
+
   return (
     <div className="flex flex-col items-center">
       <div className="flex justify-between h-80 w-screen roboto-mono">
-        <div className="h-full overflow-hidden">
+        <Link href={`/${id}/${name}`} className="h-full overflow-hidden">
           <Image
             src={imageUrl}
             alt={name}
@@ -39,11 +43,11 @@ const FavouritesItem = ({
             width={250}
             className="object-cover"
           />
-        </div>
+        </Link>
         <div className="flex flex-col p-4 w-72">
           <div className="flex justify-between ">
             <div className="flex flex-col">
-              <span>{name}</span>
+              <Link href={`/${id}/${name}`}>{name}</Link>
               <span>£{price}</span>
             </div>
             <div>
@@ -54,9 +58,7 @@ const FavouritesItem = ({
             </div>
           </div>
           <div className="flex items-end justify-end h-full">
-            <AddToBasketBtn
-              handleClick={handleClick}
-            />
+            <AddToBasketBtn handleClick={handleClick} />
           </div>
         </div>
       </div>
