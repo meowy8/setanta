@@ -3,6 +3,8 @@ import React from "react";
 import DeleteFavBtn from "./DeleteFavBtn";
 import { FavouritesItemType } from "../../../interfaces";
 import AddToBasketBtn from "./AddToBasketBtn";
+import { doc, setDoc } from "firebase/firestore";
+import { db } from "../firebase";
 
 const FavouritesItem = ({
   name,
@@ -12,6 +14,20 @@ const FavouritesItem = ({
   description,
   removeFromFavourites,
 }: FavouritesItemType) => {
+  const handleClick = () => {
+    addToBasket();
+    removeFromFavourites(id);
+  }
+  const addToBasket = async () => {
+    const docRef = doc(db, "basket", `${id}`);
+    await setDoc(docRef, {
+      id: id,
+      name: name,
+      price: price,
+      imageUrl: imageUrl,
+      description: description,
+    });
+  };
   return (
     <div className="flex flex-col items-center">
       <div className="flex justify-between h-80 w-screen roboto-mono">
@@ -39,11 +55,7 @@ const FavouritesItem = ({
           </div>
           <div className="flex items-end justify-end h-full">
             <AddToBasketBtn
-              name={name}
-              price={price}
-              id={id}
-              imageUrl={imageUrl}
-              description={description}
+              handleClick={handleClick}
             />
           </div>
         </div>
