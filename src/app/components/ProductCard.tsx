@@ -38,8 +38,8 @@ const ProductCard = ({ imageUrl, name, price, id, description }: Product) => {
     setLiked(false);
 
     // Update local storage
-    const favorites = JSON.parse(localStorage.getItem("favourites") || "[]");
-    const updatedFavourites = favorites.filter(
+    const favourites = JSON.parse(localStorage.getItem("favourites") || "[]");
+    const updatedFavourites = favourites.filter(
       (favoriteId: number) => favoriteId !== id
     );
     localStorage.setItem("favourites", JSON.stringify(updatedFavourites));

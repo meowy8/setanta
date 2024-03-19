@@ -12,6 +12,7 @@ export interface FavouritesItemType extends Product {
 
 export interface BasketItemType extends Product {
   removeFromBasket: (id: number) => void;
+  updateBasketTotal: (price: number) => void;
 }
 
 export interface DeleteFavourite {

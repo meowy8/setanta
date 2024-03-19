@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import QuantitySelector from "./QuantitySelector";
 import DeleteFromBasketBtn from "./DeleteFromBasketBtn";
 import { BasketItemType } from "../../../interfaces";
@@ -11,16 +11,26 @@ const BasketItem = ({
   imageUrl,
   id,
   removeFromBasket,
+  updateBasketTotal,
 }: BasketItemType) => {
   const [quantity, setQuantity] = useState<number>(1);
+  const [newPrice, setNewPrice] = useState<number>(price);
+
+  useEffect(() => {
+    setNewPrice(price);
+  }, [price]);
 
   const handleIncrement = () => {
     setQuantity((prev) => prev + 1);
+    setNewPrice((prev) => prev + price);
+    updateBasketTotal(price);
   };
 
   const handleDecrement = () => {
     if (quantity > 1) {
       setQuantity((prev) => prev - 1);
+      setNewPrice((prev) => prev - price);
+      updateBasketTotal(-price);
     }
   };
 
@@ -40,7 +50,7 @@ const BasketItem = ({
           <div className="flex justify-between ">
             <div className="flex flex-col">
               <span>{name}</span>
-              <span>£{price}</span>
+              <span>£{newPrice}</span>
             </div>
             <div>
               <DeleteFromBasketBtn

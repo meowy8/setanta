@@ -1,0 +1,5 @@
+Priority Tasks - 
+- add more data
+
+Other Tasks - 
+- make sure favourited items display a filled in heart even after clearing site data

@@ -8,6 +8,7 @@ import { db } from "../firebase";
 
 const Basket = () => {
   const [basketItems, setBasketItems] = useState<Product[]>([]);
+  const [basketTotal, setBasketTotal] = useState(0);
 
   const removeFromBasket = async (id: number) => {
     const docRef = doc(db, "basket", `${id}`);
@@ -16,6 +17,7 @@ const Basket = () => {
     console.log("Document successfully deleted!");
   };
 
+  // fetch basket items
   useEffect(() => {
     const fetchBasketItems = async () => {
       const collectionRef = collection(db, "basket");
@@ -40,22 +42,39 @@ const Basket = () => {
     fetchBasketItems();
   }, []);
 
+  // calculate total
+  useEffect(() => {
+    let total = 0;
+    basketItems.forEach((item) => {
+      total += item.price;
+    });
+    setBasketTotal(total);
+  }, [basketItems]);
+
+  // calculate total after quantity changes
+  const updateBasketTotal = (price : number) => {
+    setBasketTotal(prev => prev + price);
+  }
+
   return (
     <main className="relative top-20">
       <h1 className="ovo m-2 text-3xl">Basket</h1>
-      {basketItems.length > 0 &&
-        basketItems.map((product: Product) => (
-          <BasketItem
-            key={product.id}
-            name={product.name}
-            price={product.price}
-            imageUrl={product.imageUrl}
-            id={product.id}
-            description={product.description}
-            removeFromBasket={removeFromBasket}
-          />
-        ))}
-      <BasketFooter />
+      <div className="pb-24">
+        {basketItems.length > 0 &&
+          basketItems.map((product: Product) => (
+            <BasketItem
+              key={product.id}
+              name={product.name}
+              price={product.price}
+              imageUrl={product.imageUrl}
+              id={product.id}
+              description={product.description}
+              removeFromBasket={removeFromBasket}
+              updateBasketTotal={updateBasketTotal}
+            />
+          ))}
+      </div>
+      <BasketFooter basketTotal={basketTotal}/>
     </main>
   );
 };
