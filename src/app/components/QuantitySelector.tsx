@@ -4,11 +4,11 @@ import React, { useState } from "react";
 const QuantitySelector = ({
   handleIncrement,
   handleDecrement,
-  quantity,
+  quantityState,
 }: {
   handleIncrement: () => void;
   handleDecrement: () => void;
-  quantity: number;
+  quantityState: number;
 }) => {
   // const handleChange = (input: string) => {
   //   const value = parseInt(input);
@@ -28,7 +28,7 @@ const QuantitySelector = ({
         <span>-</span>
       </button>
       <input
-        value={quantity}
+        value={quantityState}
         readOnly
         className="flex text-center w-10 h-10 border-x border-black outline-none appearance-none"
       />

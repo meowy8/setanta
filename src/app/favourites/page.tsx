@@ -59,6 +59,7 @@ const Favourites = () => {
             id={product.id}
             description={product.description}
             removeFromFavourites={removeFromFavourites}
+            quantity={product.quantity}
           />
         ))}
     </main>

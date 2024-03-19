@@ -1,15 +1,15 @@
 import Image from "next/image";
 import React from "react";
-import DeleteFavBtn from "./DeleteFavBtn";
+import { Product } from "../../../interfaces";
 
-const CheckoutItem = () => {
+const CheckoutItem = ({ name, price, imageUrl, quantity }: Product) => {
   return (
     <div className="flex flex-col items-center">
       <div className="flex h-40 w-screen roboto-mono">
         <div className="h-full overflow-hidden">
           <Image
-            src="/images/pexels-ksenia-chernaya-11741419.jpg"
-            alt=""
+            src={imageUrl}
+            alt={name}
             height={100}
             width={100}
             className="object-cover w-full"
@@ -18,12 +18,11 @@ const CheckoutItem = () => {
         <div className="flex flex-col p-4 w-full">
           <div className="flex justify-between">
             <div className="flex flex-col">
-              <span>Product Name</span>
-              <span>£££</span>
-              <span className="text-sm mt-2">Quantity: <span>1</span></span>
-            </div>
-            <div>
-              <DeleteFavBtn />
+              <span>{name}</span>
+              <span>£{price}</span>
+              <span className="text-sm mt-2">
+                Quantity: <span>{quantity}</span>
+              </span>
             </div>
           </div>
         </div>

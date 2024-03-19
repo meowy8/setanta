@@ -46,15 +46,15 @@ const Basket = () => {
   useEffect(() => {
     let total = 0;
     basketItems.forEach((item) => {
-      total += item.price;
+      total += item.price * item.quantity;
     });
     setBasketTotal(total);
   }, [basketItems]);
 
   // calculate total after quantity changes
-  const updateBasketTotal = (price : number) => {
-    setBasketTotal(prev => prev + price);
-  }
+  const updateBasketTotal = (newPrice: number) => {
+    setBasketTotal((prev) => prev + newPrice);
+  };
 
   return (
     <main className="relative top-20">
@@ -71,10 +71,11 @@ const Basket = () => {
               description={product.description}
               removeFromBasket={removeFromBasket}
               updateBasketTotal={updateBasketTotal}
+              quantity={product.quantity}
             />
           ))}
       </div>
-      <BasketFooter basketTotal={basketTotal}/>
+      <BasketFooter basketTotal={basketTotal} />
     </main>
   );
 };

@@ -1,9 +1,8 @@
 import React from "react";
-import { DeleteBasketItem } from "../../../interfaces";
 
-const DeleteFromBasketBtn = ({ id, removeFromBasket }: DeleteBasketItem) => {
+const DeleteItemBtn = ({ id, handleDelete }: { id: number; handleDelete: (id: number) => void }) => {
   return (
-    <button onClick={() => removeFromBasket(id)}>
+    <button onClick={() => handleDelete(id)}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -22,4 +21,4 @@ const DeleteFromBasketBtn = ({ id, removeFromBasket }: DeleteBasketItem) => {
   );
 };
 
-export default DeleteFromBasketBtn;
+export default DeleteItemBtn;

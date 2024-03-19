@@ -1,12 +1,12 @@
 "use client";
 import Image from "next/image";
-import React, { useState } from "react";
-import DeleteFavBtn from "./DeleteFavBtn";
+import React from "react";
 import { FavouritesItemType } from "../../../interfaces";
 import AddToBasketBtn from "./AddToBasketBtn";
 import { doc, setDoc } from "firebase/firestore";
 import { db } from "../firebase";
 import Link from "next/link";
+import DeleteItemBtn from "./DeleteItemBtn";
 
 const FavouritesItem = ({
   name,
@@ -29,8 +29,13 @@ const FavouritesItem = ({
       price: price,
       imageUrl: imageUrl,
       description: description,
+      quantity: 1,
     });
   };
+
+  const handleDelete = () => {
+    removeFromFavourites(id);
+  }
 
   return (
     <div className="flex flex-col items-center">
@@ -51,10 +56,7 @@ const FavouritesItem = ({
               <span>£{price}</span>
             </div>
             <div>
-              <DeleteFavBtn
-                id={id}
-                removeFromFavourites={removeFromFavourites}
-              />
+              <DeleteItemBtn handleDelete={handleDelete} id={id}/>
             </div>
           </div>
           <div className="flex items-end justify-end h-full">

@@ -58,6 +58,7 @@ const MenPage = () => {
               imageUrl={product.imageUrl}
               id={product.id}
               description={product.description}
+              quantity={product.quantity}
             />
           ))}
       </div>

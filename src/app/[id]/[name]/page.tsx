@@ -58,6 +58,7 @@ const ProductDetail = () => {
       price: product.price,
       imageUrl: product.imageUrl,
       description: product.description,
+      quantity: 1,
     });
   };
 

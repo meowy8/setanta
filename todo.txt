@@ -1,6 +1,7 @@
 Priority Tasks - 
-- create product detail pages
 - add more data
+- create shipping page
+- create payment method page
 
 Other Tasks - 
 - make sure favourited items display a filled in heart even after clearing site data

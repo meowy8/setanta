@@ -2,37 +2,57 @@
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import QuantitySelector from "./QuantitySelector";
-import DeleteFromBasketBtn from "./DeleteFromBasketBtn";
 import { BasketItemType } from "../../../interfaces";
 import Link from "next/link";
+import DeleteItemBtn from "./DeleteItemBtn";
+import { doc, updateDoc } from "firebase/firestore";
+import { db } from "../firebase";
 
 const BasketItem = ({
   name,
   price,
   imageUrl,
   id,
+  quantity,
   removeFromBasket,
   updateBasketTotal,
 }: BasketItemType) => {
-  const [quantity, setQuantity] = useState<number>(1);
+  const [quantityState, setQuantityState] = useState<number>(1);
   const [newPrice, setNewPrice] = useState<number>(price);
 
   useEffect(() => {
-    setNewPrice(price);
-  }, [price]);
+    setNewPrice(price * quantityState);
+  }, [price, quantityState]);
+
+  useEffect(() => {
+    setQuantityState(quantity);
+  }, [quantity]);
 
   const handleIncrement = () => {
-    setQuantity((prev) => prev + 1);
+    setQuantityState((prev) => prev + 1);
     setNewPrice((prev) => prev + price);
     updateBasketTotal(price);
+    updateQuantityData(1);
   };
 
   const handleDecrement = () => {
-    if (quantity > 1) {
-      setQuantity((prev) => prev - 1);
+    if (quantityState > 1) {
+      setQuantityState((prev) => prev - 1);
       setNewPrice((prev) => prev - price);
       updateBasketTotal(-price);
+      updateQuantityData(-1);
     }
+  };
+
+  const handleDelete = () => {
+    removeFromBasket(id);
+  };
+
+  const updateQuantityData = async (increment: number) => {
+    const docRef = doc(db, "basket", `${id}`);
+    await updateDoc(docRef, {
+      quantity: quantityState + increment,
+    });
   };
 
   return (
@@ -54,17 +74,14 @@ const BasketItem = ({
               <span>£{newPrice}</span>
             </div>
             <div>
-              <DeleteFromBasketBtn
-                id={id}
-                removeFromBasket={removeFromBasket}
-              />
+              <DeleteItemBtn id={id} handleDelete={handleDelete} />
             </div>
           </div>
           <div className="flex items-end justify-end h-full">
             <QuantitySelector
               handleIncrement={handleIncrement}
               handleDecrement={handleDecrement}
-              quantity={quantity}
+              quantityState={quantityState}
             />
           </div>
         </div>
