@@ -4,6 +4,7 @@ import CheckoutItem from "../components/CheckoutItem";
 import { Product } from "../../../interfaces";
 import { collection, getDocs, query } from "firebase/firestore";
 import { db } from "../firebase";
+import CheckoutFooter from "../components/CheckoutFooter";
 
 const Checkout = () => {
   const [checkoutItems, setCheckoutItems] = useState<Product[]>([]);
@@ -49,6 +50,7 @@ const Checkout = () => {
             />
           ))}
       </div>
+      <CheckoutFooter />
     </main>
   );
 };

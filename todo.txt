@@ -1,6 +1,7 @@
 Priority Tasks - 
 - add more data
 - create shipping page
+  - add footer
 - create payment method page
 
 Other Tasks - 
