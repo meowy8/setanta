@@ -47,6 +47,7 @@ const Checkout = () => {
               quantity={product.quantity}
               id={product.id}
               description={product.description}
+              type={product.type}
             />
           ))}
       </div>

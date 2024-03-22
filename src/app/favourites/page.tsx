@@ -60,6 +60,7 @@ const Favourites = () => {
             description={product.description}
             removeFromFavourites={removeFromFavourites}
             quantity={product.quantity}
+            type={product.type}
           />
         ))}
     </main>

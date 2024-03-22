@@ -5,6 +5,7 @@ export interface Product {
   imageUrl: string[];
   description: string;
   quantity: number;
+  type: string;
 }
 
 export interface FavouritesItemType extends Product {

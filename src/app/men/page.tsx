@@ -4,9 +4,15 @@ import ProductCard from "../components/ProductCard";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "../firebase";
 import { Product } from "../../../interfaces";
+import ProductTypeSelector from "../components/ProductTypeSelector";
 
 const MenPage = () => {
   const [menData, setMenData] = useState<Product[]>([]);
+  const [productType, setProductType] = useState<string>("all");
+  const [filteredProducts, setFilteredProducts] = useState<
+    Product[] | undefined
+  >();
+  const [selectedButton, setSelectedButton] = useState<string>("all");
 
   useEffect(() => {
     const fetchMenData = async () => {
@@ -26,31 +32,42 @@ const MenPage = () => {
       });
 
       setMenData([...newData]);
+      setFilteredProducts([...newData]);
     };
 
     fetchMenData();
   }, []);
 
+  useEffect(() => {
+    const filteredData = filterByProductType();
+    setFilteredProducts(filteredData);
+    setSelectedButton(productType);
+  }, [productType]);
+
+  const changeProductType = (type: string) => {
+    setProductType(type);
+  };
+
+  const filterByProductType = () => {
+    if (productType === "all") {
+      return menData;
+    } else if (productType === "Jackets/Coats") {
+      return menData.filter((product) => product.type === "Jackets/Coats");
+    } else if (productType === "Tops") {
+      return menData.filter((product) => product.type === "Tops");
+    } else if (productType === "Bottoms") {
+      return menData.filter((product) => product.type === "Bottoms");
+    }
+  };
+
   return (
     <main className="relative top-20 ">
       <h1 className="ovo m-2 text-3xl">Men</h1>
-      <div className="roboto-mono flex gap-4 p-2">
-        <button className="border border-black py-1 px-4 hover:bg-black hover:text-white">
-          VIEW ALL
-        </button>
-        <button className="border border-black py-1 px-4 hover:bg-black hover:text-white">
-          JOGGERS
-        </button>
-        <button className="border border-black py-1 px-4 hover:bg-black hover:text-white">
-          CARGO
-        </button>
-        <button className="border border-black py-1 px-4 hover:bg-black hover:text-white">
-          SHORTS
-        </button>
-      </div>
+      <ProductTypeSelector changeProductType={changeProductType} selectedButton={selectedButton}/>
       <div className="grid grid-cols-2 justify-center">
-        {menData.length > 0 &&
-          menData.map((product: Product) => (
+        {filteredProducts &&
+          filteredProducts.length > 0 &&
+          filteredProducts.map((product: Product) => (
             <ProductCard
               name={product.name}
               key={product.id}
@@ -59,6 +76,7 @@ const MenPage = () => {
               id={product.id}
               description={product.description}
               quantity={product.quantity}
+              type={product.type}
             />
           ))}
       </div>

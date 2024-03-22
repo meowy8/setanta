@@ -57,6 +57,7 @@ const HomePage = () => {
               id={product.id}
               description={product.description}
               quantity={product.quantity}
+              type={product.type}
             />
           ))}
       </div>

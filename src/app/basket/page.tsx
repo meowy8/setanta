@@ -72,6 +72,7 @@ const Basket = () => {
               removeFromBasket={removeFromBasket}
               updateBasketTotal={updateBasketTotal}
               quantity={product.quantity}
+              type={product.type}
             />
           ))}
       </div>
