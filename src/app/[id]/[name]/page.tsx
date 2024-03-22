@@ -20,13 +20,17 @@ import HeartButton from "@/app/components/HeartButton";
 const ProductDetail = () => {
   const [product, setProduct] = useState<Product>({} as Product);
   const [liked, setLiked] = useState(false);
-  const { id, name } = useParams();
+  const { id } = useParams();
 
   const parsedId = Array.isArray(id) ? id[0] : id;
 
   useEffect(() => {
+    console.log(product);
+  }, [product]);
+
+  useEffect(() => {
     window.scrollTo(0, 0);
-  })
+  }, []);
 
   // fetch product data
   useEffect(() => {
@@ -98,22 +102,26 @@ const ProductDetail = () => {
 
   return (
     <main className="relative top-20">
-      <div className="h-screen">
+      <div className="flex flex-col relative bottom-40">
         {/* each image should have multiple images that can be scrolled through */}
-        {product.imageUrl && (
-          <Image
-            src={product.imageUrl}
-            alt={product.name}
-            width={300}
-            height={300}
-          />
-        )}
+        {product.imageUrl &&
+          product.imageUrl.map((url, index) => (
+            <div key={index}>
+              <Image
+                src={url}
+                alt={product.name}
+                height={500}
+                width={500}
+                className="object-cover w-full h-full"
+              />
+            </div>
+          ))}
       </div>
-      <footer className="flex flex-col roboto-mono fixed bottom-0 w-full">
+      <footer className="flex flex-col roboto-mono fixed bottom-0 w-full bg-white h-40">
         <div className="border-y border-black flex justify-center p-2">
           <AddToBasketBtn handleClick={handleClick} />
         </div>
-        <div className="p-4">
+        <div className="p-4 overflow-scroll flex flex-col gap-2">
           <div className="flex justify-between">
             <h2>{product.name}</h2>
             <HeartButton

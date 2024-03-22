@@ -11,7 +11,7 @@ const MenPage = () => {
   useEffect(() => {
     const fetchMenData = async () => {
       const collectionRef = collection(db, "categories");
-      const q = query(collectionRef, where("id", "==", 1));
+      const q = query(collectionRef, where("id", "==", 2));
 
       const querySnap = await getDocs(q);
       const newData: Product[] = [];

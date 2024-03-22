@@ -8,7 +8,7 @@ const CheckoutItem = ({ name, price, imageUrl, quantity }: Product) => {
       <div className="flex h-40 w-screen roboto-mono">
         <div className="h-full overflow-hidden">
           <Image
-            src={imageUrl}
+            src={imageUrl[0]}
             alt={name}
             height={100}
             width={100}

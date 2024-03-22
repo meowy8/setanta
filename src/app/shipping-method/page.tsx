@@ -46,7 +46,7 @@ const ShippingMethod = () => {
               <Image
                 alt={product.name}
                 key={product.id}
-                src={product.imageUrl}
+                src={product.imageUrl[0]}
                 width={175}
                 height={250}
                 className="border border-black"

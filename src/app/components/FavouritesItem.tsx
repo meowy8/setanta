@@ -42,7 +42,7 @@ const FavouritesItem = ({
       <div className="flex justify-between h-80 w-screen roboto-mono">
         <Link href={`/${id}/${name}`} className="h-full overflow-hidden">
           <Image
-            src={imageUrl}
+            src={imageUrl[0]}
             alt={name}
             height={250}
             width={250}

@@ -22,7 +22,7 @@ const ProductCard = ({ imageUrl, name, price, id, description }: Product) => {
       id: id,
       name: name,
       price: price,
-      imageUrl: imageUrl,
+      imageUrls: imageUrl,
       description: description,
     });
   };
@@ -31,7 +31,7 @@ const ProductCard = ({ imageUrl, name, price, id, description }: Product) => {
     const docRef = doc(db, "favourites", `${id}`);
     await setDoc(docRef, {
       id: id,
-      imageUrl: imageUrl,
+      imageUrls: imageUrl,
       name: name,
       price: price,
       description: description,
@@ -63,28 +63,32 @@ const ProductCard = ({ imageUrl, name, price, id, description }: Product) => {
 
   return (
     <div className="border border-black w-full h-96">
-      <Link
-        href={`/${id}/${name}`}
-        className="border-b border-black overflow-hidden w-full h-4/5"
+      <div className="h-4/5 overflow-hidden">
+        <Link href={`/${id}/${name}`} className="flex overflow-hidden h-full">
+          <Image
+            src={imageUrl[0]}
+            width={250}
+            height={300}
+            alt={name}
+            className="w-full h-full object-cover overflow-hidden"
+          />
+        </Link>
+      </div>
+      <div
+        id="description"
+        className=" p-1 roboto-mono bg-white w-full h-1/5 relative"
       >
-        <Image
-          src={imageUrl}
-          width={400}
-          height={250}
-          alt={name}
-          className="w-full h-full object-cover"
-        />
-      </Link>
-      <div className="p-1 roboto-mono">
         <div className="flex justify-between">
-          <Link href={`/${id}/${name}`}>{name}</Link>
+          <div>
+            <Link href={`/${id}/${name}`}>{name}</Link>
+          </div>
           <HeartButton
             addToFavourites={addToFavourites}
             removeFromFavourites={removeFromFavourites}
             liked={liked}
           />
         </div>
-        <div className="flex justify-between mt-1">
+        <div className="flex justify-between">
           <p>£{price}</p>
         </div>
       </div>

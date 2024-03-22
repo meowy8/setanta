@@ -1,9 +1,7 @@
 Priority Tasks - 
-- add more data
-- create shipping page
-  - add footer
-- create payment method page
+
 
 Other Tasks - 
 - make sure favourited items display a filled in heart even after clearing site data
 - change name in url for product detail page to be hyphenated
+- change product descriptions to one lines
