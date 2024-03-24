@@ -42,6 +42,12 @@ const HomePage = () => {
     fetchHomeData();
   }, []);
 
+  useEffect(() => {
+    homeData.forEach((product) => {
+      console.log(product.id)
+    })
+  })
+
   return (
     <main className="relative top-20">
       <h1 className="ovo m-2 text-3xl">Home</h1>

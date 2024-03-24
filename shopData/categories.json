@@ -325,7 +325,7 @@
       "name": "Home",
       "products": [
         {
-          "id": 1,
+          "id": 23,
           "name": "Bowls",
           "description": "Stylish bowls for your dining table",
           "categoryId": 4,
@@ -336,7 +336,7 @@
           ]
         },
         {
-          "id": 2,
+          "id": 24,
           "name": "Carpet",
           "description": "Soft and elegant carpet for your home decor",
           "categoryId": 4,
@@ -349,7 +349,7 @@
           ]
         },
         {
-          "id": 3,
+          "id": 25,
           "name": "Chair",
           "description": "Comfortable chair for your living room",
           "categoryId": 4,
@@ -361,7 +361,7 @@
           ]
         },
         {
-          "id": 4,
+          "id": 26,
           "name": "Jars",
           "description": "Stylish jars for kitchen storage",
           "categoryId": 4,
@@ -373,7 +373,7 @@
           ]
         },
         {
-          "id": 5,
+          "id": 27,
           "name": "Mirror",
           "description": "Elegant mirror for your bedroom or bathroom",
           "categoryId": 4,
@@ -385,7 +385,7 @@
           ]
         },
         {
-          "id": 6,
+          "id": 28,
           "name": "Photo Frames",
           "description": "Beautiful photo frames for your memories",
           "categoryId": 4,
@@ -398,7 +398,7 @@
           ]
         },
         {
-          "id": 7,
+          "id": 29,
           "name": "Plant Pots",
           "description": "Decorative plant pots for your indoor plants",
           "categoryId": 4,
@@ -410,7 +410,7 @@
           ]
         },
         {
-          "id": 8,
+          "id": 30,
           "name": "Plates",
           "description": "Elegant plates for your dining experience",
           "categoryId": 4,
@@ -422,7 +422,7 @@
           ]
         },
         {
-          "id": 9,
+          "id": 31,
           "name": "Record Player",
           "description": "Vintage record player for music enthusiasts",
           "categoryId": 4,
@@ -434,7 +434,7 @@
           ]
         },
         {
-          "id": 10,
+          "id": 32,
           "name": "Shelf",
           "description": "Functional shelf for organizing your books or decorative items",
           "categoryId": 4,

@@ -31,7 +31,7 @@ const ProductCard = ({ imageUrl, name, price, id, description }: Product) => {
     const docRef = doc(db, "favourites", `${id}`);
     await setDoc(docRef, {
       id: id,
-      imageUrls: imageUrl,
+      imageUrl: imageUrl,
       name: name,
       price: price,
       description: description,

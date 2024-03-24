@@ -16,6 +16,12 @@ const Favourites = () => {
   const [favourites, setFavourites] = useState<Product[]>([]);
 
   useEffect(() => {
+    favourites.forEach((product) => {
+      console.log(product);
+    })
+  })
+
+  useEffect(() => {
     const fetchFavourites = async () => {
       const collectionRef = collection(db, "favourites");
       const q = query(collectionRef);

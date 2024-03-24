@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect } from "react";
 import { FavouritesItemType } from "../../../interfaces";
 import AddToBasketBtn from "./AddToBasketBtn";
 import { doc, setDoc } from "firebase/firestore";
@@ -35,7 +35,11 @@ const FavouritesItem = ({
 
   const handleDelete = () => {
     removeFromFavourites(id);
-  }
+  };
+
+  useEffect(() => {
+    console.log(imageUrl);
+  }, [imageUrl]);
 
   return (
     <div className="flex flex-col items-center">
@@ -56,7 +60,7 @@ const FavouritesItem = ({
               <span>£{price}</span>
             </div>
             <div>
-              <DeleteItemBtn handleDelete={handleDelete} id={id}/>
+              <DeleteItemBtn handleDelete={handleDelete} id={id} />
             </div>
           </div>
           <div className="flex items-end justify-end h-full">
