@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import ProductCard from "../components/ProductCard";
 import { Product } from "../../../interfaces";
@@ -69,10 +69,12 @@ const Search = () => {
   }, [searchResults]);
 
   return (
-    <main className="relative top-20 p-2">
-      <h1>results for &apos;{queryParams}&apos;</h1>
-      <ProductsDisplay data={filteredProducts} />
-    </main>
+    <Suspense fallback={<div>Loading...</div>}>
+      <main className="relative top-20 p-2">
+        <h1>results for &apos;{queryParams}&apos;</h1>
+        <ProductsDisplay data={filteredProducts} />
+      </main>
+    </Suspense>
   );
 };
 
