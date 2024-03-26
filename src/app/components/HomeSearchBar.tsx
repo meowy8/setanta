@@ -50,7 +50,7 @@ const HomeSearchBar = () => {
   return (
     <form
       onSubmit={(e) => handleSubmit(e)}
-      className="fixed bottom-8 pb-10 w-full flex flex-col justify-center items-center z-10"
+      className="fixed bottom-8 pb-10 w-full flex flex-col justify-center items-center z-1"
     >
       {suggestions.length > 0 && (
         <div className="bg-white w-4/5 max-h-64 flex flex-col p-1 overflow-scroll">

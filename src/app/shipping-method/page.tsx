@@ -10,6 +10,9 @@ import Link from "next/link";
 
 const ShippingMethod = () => {
   const [basketItems, setBasketItems] = useState<Product[]>([]);
+  const [checked, setChecked] = useState(false);
+  const [selectedShippingMethod, setSelectedShippingMethod] =
+    useState<string>("");
 
   useEffect(() => {
     const fetchBasketItems = async () => {
@@ -35,9 +38,20 @@ const ShippingMethod = () => {
     fetchBasketItems();
   }, []);
 
+  const handleChecked = () => {
+    setChecked(!checked);
+  };
+
+  const handleShippingSelection = (method: string) => {
+    setSelectedShippingMethod(method);
+  };
+
   return (
     <main className="relative top-20 roboto-mono">
-      <ShippingMethodSelect />
+      <ShippingMethodSelect
+        handleShippingSelection={handleShippingSelection}
+        selectedShippingMethod={selectedShippingMethod}
+      />
       <section>
         <h1 className=" m-4 text-xl">Items</h1>
         <div className="flex flex-wrap justify-center">
@@ -60,6 +74,8 @@ const ShippingMethod = () => {
               name="shipping-method"
               id="shipping-method"
               className="mr-2"
+              onChange={handleChecked}
+              checked={checked}
             />
             <div id="shipping-method" className="flex justify-between w-full">
               <span>Thursday 21, March - Friday 22, March</span>
@@ -69,10 +85,19 @@ const ShippingMethod = () => {
         </ul>
       </section>
       <footer className="fixed bottom-0 border-t border-black w-full flex justify-between items-center">
-        <Link href={"/payment-method"} className="bg-black text-white h-full py-4 px-10">
-          Continue
-        </Link>
-        <span className="mr-4">Shipping £3.95</span>
+        {checked && selectedShippingMethod ? (
+          <Link
+            href={`/payment-method?shipping=${selectedShippingMethod}`}
+            className="bg-black text-white h-full py-4 px-10"
+          >
+            Continue
+          </Link>
+        ) : (
+          <div className="bg-black/40 text-white h-full py-4 px-10">
+            Continue
+          </div>
+        )}
+        {checked && <span className="mr-4">Shipping £3.95</span>}
       </footer>
     </main>
   );

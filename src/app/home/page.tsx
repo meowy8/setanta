@@ -4,6 +4,7 @@ import ProductCard from "../components/ProductCard";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "../firebase";
 import { Product } from "../../../interfaces";
+import ProductsDisplay from "../components/ProductsDisplay";
 
 const HomePage = () => {
   const [homeData, setHomeData] = useState<Product[]>([]);
@@ -51,22 +52,7 @@ const HomePage = () => {
   return (
     <main className="relative top-20">
       <h1 className="ovo m-2 text-3xl">Home</h1>
-      {/* Add your home page content here */}
-      <div className="grid grid-cols-2 justify-center">
-        {homeData.length > 0 &&
-          homeData.map((product: Product) => (
-            <ProductCard
-              name={product.name}
-              key={product.id}
-              price={product.price}
-              imageUrl={product.imageUrl}
-              id={product.id}
-              description={product.description}
-              quantity={product.quantity}
-              type={product.type}
-            />
-          ))}
-      </div>
+      <ProductsDisplay data={homeData} />
     </main>
   );
 };

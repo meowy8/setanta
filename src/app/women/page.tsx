@@ -5,6 +5,7 @@ import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "../firebase";
 import { Product } from "../../../interfaces";
 import ProductTypeSelector from "../components/ProductTypeSelector";
+import ProductsDisplay from "../components/ProductsDisplay";
 
 const WomenPage = () => {
   const [womenData, setWomenData] = useState<Product[]>([]);
@@ -63,23 +64,11 @@ const WomenPage = () => {
   return (
     <main className="relative top-20 ">
       <h1 className="ovo m-2 text-3xl">Women</h1>
-      <ProductTypeSelector changeProductType={changeProductType} selectedButton={selectedButton} />
-      <div className="grid grid-cols-2 justify-center">
-        {filteredProducts &&
-          filteredProducts.length > 0 &&
-          filteredProducts.map((product: Product) => (
-            <ProductCard
-              name={product.name}
-              key={product.id}
-              price={product.price}
-              imageUrl={product.imageUrl}
-              id={product.id}
-              description={product.description}
-              quantity={product.quantity}
-              type={product.type}
-            />
-          ))}
-      </div>
+      <ProductTypeSelector
+        changeProductType={changeProductType}
+        selectedButton={selectedButton}
+      />
+      <ProductsDisplay data={filteredProducts || womenData} />
     </main>
   );
 };

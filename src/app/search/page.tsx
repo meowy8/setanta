@@ -5,6 +5,7 @@ import ProductCard from "../components/ProductCard";
 import { Product } from "../../../interfaces";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "../firebase";
+import ProductsDisplay from "../components/ProductsDisplay";
 
 const Search = () => {
   const [queryParams, setQueryParams] = useState<string>("");
@@ -70,20 +71,7 @@ const Search = () => {
   return (
     <main className="relative top-20 p-2">
       <h1>results for &apos;{queryParams}&apos;</h1>
-      <div className="grid grid-cols-2 justify-center">
-        {filteredProducts?.map((result: Product, index) => (
-          <ProductCard
-            name={result.name}
-            key={result.id}
-            price={result.price}
-            description={result.description}
-            quantity={result.quantity}
-            type={result.type}
-            imageUrl={result.imageUrl}
-            id={result.id}
-          />
-        ))}
-      </div>
+      <ProductsDisplay data={filteredProducts} />
     </main>
   );
 };

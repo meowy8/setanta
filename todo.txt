@@ -1,6 +1,5 @@
 Priority Tasks - 
-- add search feature
-
+- design site for larger screens
 
 Other Tasks - 
 - make sure favourited items display a filled in heart even after clearing site data

@@ -56,28 +56,38 @@ const Sidebar = ({
             </svg>
           </button>
         </div>
-        <ul className="px-4 py-10 text-black font-semibold w-44">
+        <ul
+          className={`px-4 py-10 font-semibold w-full flex flex-col text-xl gap-6`}
+        >
           <li
             onClick={toggleSidebar}
-            className="px-4 py-2 cursor-pointer rounded-lg"
+            className={`px-4 py-2 cursor-pointer rounded-lg hover:bg-black hover:text-white w-full flex justify-end -translate-x-32 ${
+              isOpen ? "text-black -translate-x-0" : "text-white"
+            } transition-all duration-500 ease-in-out`}
           >
             <Link href={"/women"}>Women</Link>
           </li>
           <li
             onClick={toggleSidebar}
-            className="px-4 py-2 cursor-pointer rounded-lg"
+            className={`px-4 py-2 cursor-pointer rounded-lg hover:bg-black hover:text-white w-full flex justify-end -translate-x-32 ${
+              isOpen ? "text-black -translate-x-0" : "text-white"
+            } transition-all duration-500 ease-in-out`}
           >
             <Link href={"/men"}>Men</Link>
           </li>
           <li
             onClick={toggleSidebar}
-            className="px-4 py-2 cursor-pointer rounded-lg"
+            className={`px-4 py-2 cursor-pointer rounded-lg hover:bg-black hover:text-white w-full flex justify-end -translate-x-32 ${
+              isOpen ? "text-black -translate-x-0" : "text-white"
+            } transition-all duration-500 ease-in-out`}
           >
             <Link href={"/accessories"}>Accessories</Link>
           </li>
           <li
             onClick={toggleSidebar}
-            className="px-4 py-2 cursor-pointer rounded-lg"
+            className={`px-4 py-2 cursor-pointer rounded-lg hover:bg-black hover:text-white w-full flex justify-end -translate-x-32 ${
+              isOpen ? "text-black -translate-x-0" : "text-white"
+            } transition-all duration-500 ease-in-out`}
           >
             <Link href={"/home"}>Home</Link>
           </li>

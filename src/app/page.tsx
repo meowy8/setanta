@@ -9,12 +9,12 @@ const WomenSection = () => {
     <Link href="/women">
       <section
         id="women"
-        className="h-screen w-full bg-cover bg-center"
+        className="h-screen w-full bg-cover bg-center group"
         style={{
           backgroundImage: `url(/images/pexels-konstantin-mishchenko-1926769.jpg)`,
         }}
       >
-        <h1 className="text-5xl relative top-[350px] left-[350px] drop-shadow-lg">
+        <h1 className="text-5xl relative top-[350px] left-[350px] drop-shadow-lg group-hover:-translate-y-5 group-hover:text-white transition-all ease-in-out duration-500">
           Women
         </h1>
       </section>
@@ -27,12 +27,12 @@ const MenSection = () => {
     <Link href="/men">
       <section
         id="men"
-        className="h-screen w-full flex items-center justify-center bg-cover bg-center"
+        className="h-screen w-full flex items-center justify-center bg-cover bg-center group"
         style={{
           backgroundImage: `url(/images/pexels-teddy-tavan-4890733.jpg)`,
         }}
       >
-        <h1 className="text-5xl relative bottom-[300px] right-[150px]">Men</h1>
+        <h1 className="text-5xl relative bottom-[300px] right-[150px] group-hover:-translate-y-5 group-hover:text-white transition-all ease-in-out duration-500">Men</h1>
       </section>
     </Link>
   );
@@ -43,10 +43,10 @@ const AccessoriesSection = () => {
     <Link href="/accessories">
       <section
         id="accessories"
-        className="h-screen w-full flex items-center justify-center bg-cover bg-center"
+        className="h-screen w-full flex items-center justify-center bg-cover bg-center group"
         style={{ backgroundImage: `url(/images/pexels-rfstudio-3819624.jpg)` }}
       >
-        <h1 className="text-5xl relative bottom-[300px] left-[70px]">
+        <h1 className="text-5xl relative bottom-[300px] left-[70px] group-hover:-translate-y-5 group-hover:text-white transition-all ease-in-out duration-500">
           Accessories
         </h1>
       </section>
@@ -59,12 +59,12 @@ const HomeSection = () => {
     <Link href="/home">
       <section
         id="home"
-        className="h-screen w-full flex items-center justify-center bg-cover bg-center"
+        className="h-screen w-full flex items-center justify-center bg-cover bg-center group"
         style={{
           backgroundImage: `url(/images/pexels-ksenia-chernaya-11741419.jpg)`,
         }}
       >
-        <h1 className="text-5xl relative bottom-[220px]">Home</h1>
+        <h1 className="text-5xl relative bottom-[220px] group-hover:-translate-y-5 group-hover:text-white transition-all ease-in-out duration-500">Home</h1>
       </section>
     </Link>
   );
@@ -76,17 +76,17 @@ const FooterSection = () => {
       id="footer"
       className=" h-screen w-full flex flex-col items-center justify-center bg-white"
     >
-      <div className="relative top-20 flex flex-col gap-8">
-        <Link href="/women" className="text-5xl relative left-1/3 ">
+      <div className="relative top-20 flex flex-col gap-8 text-5xl">
+        <Link href="/women" className=" relative left-1/3 ">
           Women
         </Link>
-        <Link href="/men" className="text-5xl relative right-1/3">
+        <Link href="/men" className=" relative right-1/3">
           Men
         </Link>
-        <Link href="/accessories" className="text-5xl relative left-1/3">
+        <Link href="/accessories" className=" relative left-1/3">
           Accessories
         </Link>
-        <Link href="/home" className="text-5xl relative right-1/3">
+        <Link href="/home" className=" relative right-1/3">
           Home
         </Link>
       </div>
@@ -100,15 +100,16 @@ const FooterSection = () => {
 };
 
 export default function HomePage() {
-
   return (
     <main className="overflow-hidden relative">
       <HomeSearchBar />
       <div className="ovo">
-        <WomenSection />
-        <MenSection />
-        <AccessoriesSection />
-        <HomeSection />
+        <div className="lg:grid grid-cols-4">
+          <WomenSection />
+          <MenSection />
+          <AccessoriesSection />
+          <HomeSection />
+        </div>
         <FooterSection />
       </div>
     </main>

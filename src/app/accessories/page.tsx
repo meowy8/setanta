@@ -4,6 +4,7 @@ import ProductCard from "../components/ProductCard";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "../firebase";
 import { Product } from "../../../interfaces";
+import ProductsDisplay from "../components/ProductsDisplay";
 
 const MenPage = () => {
   const [accessoriesData, setAccessoriesData] = useState<Product[]>([]);
@@ -32,23 +33,9 @@ const MenPage = () => {
   }, []);
 
   return (
-    <main className="relative top-20 ">
+    <main className="relative top-20">
       <h1 className="ovo m-2 text-3xl">Accessories</h1>
-      <div className="grid grid-cols-2 justify-center">
-        {accessoriesData.length > 0 &&
-          accessoriesData.map((product: Product) => (
-            <ProductCard
-              name={product.name}
-              key={product.id}
-              price={product.price}
-              imageUrl={product.imageUrl}
-              id={product.id}
-              description={product.description}
-              quantity={product.quantity}
-              type={product.type}
-            />
-          ))}
-      </div>
+      <ProductsDisplay data={accessoriesData} />
     </main>
   );
 };

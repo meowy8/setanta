@@ -5,10 +5,16 @@ import { Product } from "../../../interfaces";
 import { db } from "../firebase";
 import Image from "next/image";
 import Link from "next/link";
+import { useParams, useSearchParams } from "next/navigation";
+import { useRouter } from "next/router";
 
 const Summary = () => {
   const [basketItems, setBasketItems] = useState<Product[]>([]);
   const [numberOfItems, setNumberOfItems] = useState(0);
+
+  const params = useSearchParams();
+  const shipping = params.get("shipping");
+  const payment = params.get("payment");
 
   useEffect(() => {
     setNumberOfItems(basketItems.length);
@@ -56,17 +62,14 @@ const Summary = () => {
       </div>
       <section className="flex flex-col p-4 ">
         <div className="p-8 border-b border-black">
-          <p>*Delivery Location*</p>
-          <p>*Delivery Schedule*</p>
+          <p>Shipping method: {shipping}</p>
         </div>
         <div className="p-8 border-b border-black">
-          <p>*Payment Method*</p>
+          <p>Payment method: {payment}</p>
         </div>
       </section>
       <footer className="fixed bottom-0 w-full">
-        <div>
-
-        </div>
+        <div></div>
         <div className=" border-t border-black w-full flex justify-between items-center">
           <Link
             href={"/payment-successful"}
@@ -74,9 +77,6 @@ const Summary = () => {
           >
             Authorise Payment
           </Link>
-          <p className="mr-4">
-            Total <span>£££</span>
-          </p>
         </div>
       </footer>
     </main>

@@ -3,7 +3,14 @@ import React, { useEffect, useState } from "react";
 import BasketItem from "../components/BasketItem";
 import BasketFooter from "../components/BasketFooter";
 import { Product } from "../../../interfaces";
-import { collection, deleteDoc, doc, getDocs, query } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  deleteDoc,
+  doc,
+  getDocs,
+  query,
+} from "firebase/firestore";
 import { db } from "../firebase";
 
 const Basket = () => {
@@ -57,9 +64,9 @@ const Basket = () => {
   };
 
   return (
-    <main className="relative top-20">
+    <main className="relative top-20 ">
       <h1 className="ovo m-2 text-3xl">Basket</h1>
-      <div className="pb-24">
+      <div className="pb-24 ">
         {basketItems.length > 0 &&
           basketItems.map((product: Product) => (
             <BasketItem
