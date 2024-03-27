@@ -5,7 +5,7 @@ import { Product } from "../../../interfaces";
 const CheckoutItem = ({ name, price, imageUrl, quantity }: Product) => {
   return (
     <div className="flex flex-col items-center">
-      <div className="flex h-40 w-screen roboto-mono">
+      <div className="flex h-40 roboto-mono">
         <div className="h-full overflow-hidden">
           <Image
             src={imageUrl[0]}

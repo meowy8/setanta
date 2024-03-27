@@ -10,7 +10,7 @@ const Sidebar = ({
   isOpen: boolean;
 }) => {
   return (
-    <aside>
+    <aside className="lg:hidden">
       <button
         onClick={toggleSidebar}
         className="flex justify-center items-center"
@@ -133,6 +133,12 @@ const NavBar = () => {
       }`}
     >
       <Sidebar toggleSidebar={toggleSidebar} isOpen={isOpen} />
+      <div className="hidden gap-4 ovo ml-6 lg:flex">
+        <Link href={"/women"} className="hover:underline">Women</Link>
+        <Link href={"/men"} className="hover:underline">Men</Link>
+        <Link href={"/accessories"} className="hover:underline">Accessories</Link>
+        <Link href={"/home"} className="hover:underline">Home</Link>
+      </div>
       <div className="flex items-center gap-4">
         <Link href={"/"} className="slackside-one text-[36px] mb-2">
           Setanta

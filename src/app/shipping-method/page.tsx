@@ -47,7 +47,7 @@ const ShippingMethod = () => {
   };
 
   return (
-    <main className="relative top-20 roboto-mono">
+    <main className="relative top-20 roboto-mono mb-44">
       <ShippingMethodSelect
         handleShippingSelection={handleShippingSelection}
         selectedShippingMethod={selectedShippingMethod}
@@ -57,14 +57,15 @@ const ShippingMethod = () => {
         <div className="flex flex-wrap justify-center">
           {basketItems.length > 0 &&
             basketItems.map((product: Product) => (
-              <Image
-                alt={product.name}
-                key={product.id}
-                src={product.imageUrl[0]}
-                width={175}
-                height={250}
-                className="border border-black"
-              />
+              <div key={product.id} className="overflow-hidden">
+                <Image
+                  alt={product.name}
+                  src={product.imageUrl[0]}
+                  width={175}
+                  height={250}
+                  className="border border-black object-cover w-full h-full"
+                />
+              </div>
             ))}
         </div>
         <ul className="p-8 border-y border-black m-4">
@@ -84,7 +85,7 @@ const ShippingMethod = () => {
           </li>
         </ul>
       </section>
-      <footer className="fixed bottom-0 border-t border-black w-full flex justify-between items-center">
+      <footer className="fixed bottom-0 border-t border-black w-full flex justify-between items-center bg-white">
         {checked && selectedShippingMethod ? (
           <Link
             href={`/payment-method?shipping=${selectedShippingMethod}`}

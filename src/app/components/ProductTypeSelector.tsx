@@ -9,7 +9,7 @@ const ProductTypeSelector = ({
   selectedButton: string;
 }) => {
   return (
-    <div className="roboto-mono flex gap-4 p-2">
+    <div className="roboto-mono flex gap-4 p-2 m-4">
       <button
         onClick={() => changeProductType("all")}
         className={`border border-black py-1 px-4 hover:bg-black hover:text-white ${

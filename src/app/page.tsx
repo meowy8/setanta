@@ -9,12 +9,12 @@ const WomenSection = () => {
     <Link href="/women">
       <section
         id="women"
-        className="h-screen w-full bg-cover bg-center group"
+        className="h-screen w-full bg-cover bg-center group flex justify-center items-center"
         style={{
           backgroundImage: `url(/images/pexels-konstantin-mishchenko-1926769.jpg)`,
         }}
       >
-        <h1 className="text-5xl relative top-[350px] left-[350px] drop-shadow-lg group-hover:-translate-y-5 group-hover:text-white transition-all ease-in-out duration-500">
+        <h1 className="text-5xl drop-shadow-lg group-hover:-translate-y-5 group-hover:text-white transition-all ease-in-out duration-500">
           Women
         </h1>
       </section>
@@ -32,7 +32,7 @@ const MenSection = () => {
           backgroundImage: `url(/images/pexels-teddy-tavan-4890733.jpg)`,
         }}
       >
-        <h1 className="text-5xl relative bottom-[300px] right-[150px] group-hover:-translate-y-5 group-hover:text-white transition-all ease-in-out duration-500">Men</h1>
+        <h1 className="text-5xl group-hover:-translate-y-5 group-hover:text-white transition-all ease-in-out duration-500">Men</h1>
       </section>
     </Link>
   );
@@ -46,7 +46,7 @@ const AccessoriesSection = () => {
         className="h-screen w-full flex items-center justify-center bg-cover bg-center group"
         style={{ backgroundImage: `url(/images/pexels-rfstudio-3819624.jpg)` }}
       >
-        <h1 className="text-5xl relative bottom-[300px] left-[70px] group-hover:-translate-y-5 group-hover:text-white transition-all ease-in-out duration-500">
+        <h1 className="text-5xl group-hover:-translate-y-5 group-hover:text-white transition-all ease-in-out duration-500">
           Accessories
         </h1>
       </section>
@@ -64,7 +64,7 @@ const HomeSection = () => {
           backgroundImage: `url(/images/pexels-ksenia-chernaya-11741419.jpg)`,
         }}
       >
-        <h1 className="text-5xl relative bottom-[220px] group-hover:-translate-y-5 group-hover:text-white transition-all ease-in-out duration-500">Home</h1>
+        <h1 className="text-5xl group-hover:-translate-y-5 group-hover:text-white transition-all ease-in-out duration-500">Home</h1>
       </section>
     </Link>
   );
@@ -74,9 +74,9 @@ const FooterSection = () => {
   return (
     <section
       id="footer"
-      className=" h-screen w-full flex flex-col items-center justify-center bg-white"
+      className=" h-screen w-full flex flex-col items-center justify-center bg-white mt-44 mb-56"
     >
-      <div className="relative top-20 flex flex-col gap-8 text-5xl">
+      <div className=" flex flex-col gap-8 text-5xl">
         <Link href="/women" className=" relative left-1/3 ">
           Women
         </Link>
@@ -90,10 +90,10 @@ const FooterSection = () => {
           Home
         </Link>
       </div>
-      <footer className="mt-96 flex gap-6 relative top-[150px]">
-        <span>Cookie Settings</span>
-        <span>Terms and Conditions</span>
-        <span>Privacy Policy</span>
+      <footer className="mt-96 flex gap-6">
+        <button>Cookie Settings</button>
+        <button>Terms and Conditions</button>
+        <button>Privacy Policy</button>
       </footer>
     </section>
   );

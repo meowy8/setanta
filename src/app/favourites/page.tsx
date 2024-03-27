@@ -11,6 +11,7 @@ import {
 } from "firebase/firestore";
 import { db } from "../firebase";
 import { Product } from "../../../interfaces";
+import PageHeader from "../components/PageHeader";
 
 const Favourites = () => {
   const [favourites, setFavourites] = useState<Product[]>([]);
@@ -18,8 +19,8 @@ const Favourites = () => {
   useEffect(() => {
     favourites.forEach((product) => {
       console.log(product);
-    })
-  })
+    });
+  });
 
   useEffect(() => {
     const fetchFavourites = async () => {
@@ -53,22 +54,24 @@ const Favourites = () => {
   };
 
   return (
-    <main className="relative top-20 ">
-      <h1 className="ovo m-2 text-3xl">Favourites</h1>
-      {favourites.length > 0 &&
-        favourites.map((product: Product) => (
-          <FavouritesItem
-            key={product.id}
-            name={product.name}
-            price={product.price}
-            imageUrl={product.imageUrl}
-            id={product.id}
-            description={product.description}
-            removeFromFavourites={removeFromFavourites}
-            quantity={product.quantity}
-            type={product.type}
-          />
-        ))}
+    <main className="relative top-20 mb-32">
+      <PageHeader>Favourites</PageHeader>
+      <div className="flex flex-col items-center">
+        {favourites.length > 0 &&
+          favourites.map((product: Product) => (
+            <FavouritesItem
+              key={product.id}
+              name={product.name}
+              price={product.price}
+              imageUrl={product.imageUrl}
+              id={product.id}
+              description={product.description}
+              removeFromFavourites={removeFromFavourites}
+              quantity={product.quantity}
+              type={product.type}
+            />
+          ))}
+      </div>
     </main>
   );
 };

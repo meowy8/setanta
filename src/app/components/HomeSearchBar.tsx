@@ -53,7 +53,7 @@ const HomeSearchBar = () => {
       className="fixed bottom-8 pb-10 w-full flex flex-col justify-center items-center z-1"
     >
       {suggestions.length > 0 && (
-        <div className="bg-white w-4/5 max-h-64 flex flex-col p-1 overflow-scroll">
+        <div className="bg-white w-4/5 lg:w-3/5 max-h-64 flex flex-col p-1 overflow-scroll">
           {suggestions.map((suggestion, index) => (
             <Link
               href={`/search?q=${suggestion}`}
@@ -65,7 +65,7 @@ const HomeSearchBar = () => {
           ))}
         </div>
       )}
-      <div className="w-4/5 h-8 flex items-center backdrop-blur-sm">
+      <div className="w-4/5 lg:w-3/5 h-8 flex items-center backdrop-blur-sm">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"

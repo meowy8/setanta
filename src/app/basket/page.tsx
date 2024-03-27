@@ -66,7 +66,7 @@ const Basket = () => {
   return (
     <main className="relative top-20 ">
       <h1 className="ovo m-2 text-3xl">Basket</h1>
-      <div className="pb-24 ">
+      <div className="pb-24 flex flex-col items-center">
         {basketItems.length > 0 &&
           basketItems.map((product: Product) => (
             <BasketItem

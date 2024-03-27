@@ -6,6 +6,7 @@ import { db } from "../firebase";
 import { Product } from "../../../interfaces";
 import ProductTypeSelector from "../components/ProductTypeSelector";
 import ProductsDisplay from "../components/ProductsDisplay";
+import PageHeader from "../components/PageHeader";
 
 const MenPage = () => {
   const [menData, setMenData] = useState<Product[]>([]);
@@ -40,30 +41,31 @@ const MenPage = () => {
   }, []);
 
   useEffect(() => {
+    const filterByProductType = () => {
+      if (productType === "all") {
+        return menData;
+      } else if (productType === "Jackets/Coats") {
+        return menData.filter((product) => product.type === "Jackets/Coats");
+      } else if (productType === "Tops") {
+        return menData.filter((product) => product.type === "Tops");
+      } else if (productType === "Bottoms") {
+        return menData.filter((product) => product.type === "Bottoms");
+      }
+    };
+
     const filteredData = filterByProductType();
     setFilteredProducts(filteredData);
     setSelectedButton(productType);
-  }, [productType]);
+  }, [productType, menData]);
 
   const changeProductType = (type: string) => {
     setProductType(type);
   };
 
-  const filterByProductType = () => {
-    if (productType === "all") {
-      return menData;
-    } else if (productType === "Jackets/Coats") {
-      return menData.filter((product) => product.type === "Jackets/Coats");
-    } else if (productType === "Tops") {
-      return menData.filter((product) => product.type === "Tops");
-    } else if (productType === "Bottoms") {
-      return menData.filter((product) => product.type === "Bottoms");
-    }
-  };
 
   return (
     <main className="relative top-20 ">
-      <h1 className="ovo m-2 text-3xl">Men</h1>
+      <PageHeader>Men</PageHeader>
       <ProductTypeSelector changeProductType={changeProductType} selectedButton={selectedButton}/>
       <ProductsDisplay data={filteredProducts || menData} />
     </main>

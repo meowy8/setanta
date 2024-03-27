@@ -5,6 +5,7 @@ import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "../firebase";
 import { Product } from "../../../interfaces";
 import ProductsDisplay from "../components/ProductsDisplay";
+import PageHeader from "../components/PageHeader";
 
 const MenPage = () => {
   const [accessoriesData, setAccessoriesData] = useState<Product[]>([]);
@@ -34,7 +35,7 @@ const MenPage = () => {
 
   return (
     <main className="relative top-20">
-      <h1 className="ovo m-2 text-3xl">Accessories</h1>
+      <PageHeader>Accessories</PageHeader>
       <ProductsDisplay data={accessoriesData} />
     </main>
   );

@@ -26,8 +26,8 @@ const HeartButton = ({
         strokeWidth={1.5}
         stroke="currentColor"
         className={`w-6 h-6 ${
-          liked ? `fill-black` : `fill-none`
-        } hover:fill-black`}
+          liked ? `fill-red-500` : `fill-none`
+        } hover:fill-red-500`}
       >
         <path
           strokeLinecap="round"

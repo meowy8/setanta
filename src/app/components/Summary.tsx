@@ -44,19 +44,21 @@ const Summary = () => {
   }, []);
 
   return (
-    <main className="relative top-20 roboto-mono">
+    <main className="relative top-20 roboto-mono mb-44">
       <p className="p-4">Number of items: {numberOfItems}</p>
       <div className="flex flex-wrap justify-center ">
         {basketItems.length > 0 &&
           basketItems.map((product: Product) => (
-            <Image
-              alt={product.name}
-              key={product.id}
-              src={product.imageUrl[0]}
-              width={175}
-              height={250}
-              className="border border-black"
-            />
+            <div key={product.id} className="overflow-hidden">
+              <Image
+                alt={product.name}
+                key={product.id}
+                src={product.imageUrl[0]}
+                width={175}
+                height={250}
+                className="border border-black object-cover w-full h-full"
+              />
+            </div>
           ))}
       </div>
       <section className="flex flex-col p-4 ">

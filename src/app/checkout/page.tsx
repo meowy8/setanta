@@ -5,6 +5,7 @@ import { Product } from "../../../interfaces";
 import { collection, getDocs, query } from "firebase/firestore";
 import { db } from "../firebase";
 import CheckoutFooter from "../components/CheckoutFooter";
+import PageHeader from "../components/PageHeader";
 
 const Checkout = () => {
   const [checkoutItems, setCheckoutItems] = useState<Product[]>([]);
@@ -34,9 +35,9 @@ const Checkout = () => {
   }, []);
 
   return (
-    <main className="relative top-20">
-      <span className="ovo m-2 text-3xl">Checkout</span>
-      <div>
+    <main className="relative top-20 mb-32">
+      <PageHeader>Checkout</PageHeader>
+      <div className="flex flex-col items-center lg:grid lg:grid-cols-2">
         {checkoutItems.length > 0 &&
           checkoutItems.map((product: Product) => (
             <CheckoutItem

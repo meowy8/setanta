@@ -102,7 +102,7 @@ const ProductDetail = () => {
 
   return (
     <main className="relative top-20">
-      <div className="flex flex-col relative bottom-40">
+      <div className="flex flex-col relative bottom-40 lg:grid grid-cols-2 lg:bottom-16">
         {/* each image should have multiple images that can be scrolled through */}
         {product.imageUrl &&
           product.imageUrl.map((url, index) => (
@@ -117,11 +117,11 @@ const ProductDetail = () => {
             </div>
           ))}
       </div>
-      <footer className="flex flex-col roboto-mono fixed bottom-0 w-full bg-white h-40">
-        <div className="border-y border-black flex justify-center p-2">
+      <footer className="flex flex-col roboto-mono fixed bottom-0 w-full bg-black text-white h-40 lg:flex-row lg:border border-white">
+        <div className="border-y flex justify-center p-2 hover:bg-white hover:text-black border-white lg:border-y-0 lg:border-r">
           <AddToBasketBtn handleClick={handleClick} />
         </div>
-        <div className="p-4 overflow-scroll flex flex-col gap-2">
+        <div className="p-4 overflow-scroll flex flex-col gap-2 w-full">
           <div className="flex justify-between">
             <h2>{product.name}</h2>
             <HeartButton

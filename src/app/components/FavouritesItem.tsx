@@ -43,7 +43,7 @@ const FavouritesItem = ({
 
   return (
     <div className="flex flex-col items-center">
-      <div className="flex justify-between h-80 w-screen roboto-mono">
+      <div className="flex justify-between h-80 roboto-mono">
         <Link href={`/${id}/${name}`} className="h-full overflow-hidden">
           <Image
             src={imageUrl[0]}
