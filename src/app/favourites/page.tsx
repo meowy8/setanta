@@ -57,7 +57,7 @@ const Favourites = () => {
     <main className="relative top-20 mb-32">
       <PageHeader>Favourites</PageHeader>
       <div className="flex flex-col items-center">
-        {favourites.length > 0 &&
+        {favourites.length > 0 ? (
           favourites.map((product: Product) => (
             <FavouritesItem
               key={product.id}
@@ -70,7 +70,10 @@ const Favourites = () => {
               quantity={product.quantity}
               type={product.type}
             />
-          ))}
+          ))
+        ) : (
+          <p className="text-lg italic m-10">You have no favourites {":("}</p>
+        )}
       </div>
     </main>
   );

@@ -76,8 +76,8 @@ const FooterSection = () => {
       id="footer"
       className=" h-screen w-full flex flex-col items-center justify-center bg-white mt-44 mb-56"
     >
-      <div className=" flex flex-col gap-8 text-5xl">
-        <Link href="/women" className=" relative left-1/3 ">
+      <div className=" flex flex-col gap-8 text-3xl md:text-5xl transition-all ease-in-out duration-1000">
+        <Link href="/women" className=" relative left-1/3">
           Women
         </Link>
         <Link href="/men" className=" relative right-1/3">

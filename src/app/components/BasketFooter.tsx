@@ -1,7 +1,13 @@
 import Link from "next/link";
 import React from "react";
 
-const BasketFooter = ({ basketTotal }: { basketTotal: number }) => {
+const BasketFooter = ({
+  basketTotal,
+  numberOfItems,
+}: {
+  basketTotal: number;
+  numberOfItems: number;
+}) => {
   return (
     <footer className="fixed bg-white bottom-0 w-full border-t border-black roboto-mono">
       <div className="flex justify-between p-4 gap-8">
@@ -9,10 +15,20 @@ const BasketFooter = ({ basketTotal }: { basketTotal: number }) => {
           <span>Total</span>
           <span>£{basketTotal}</span>
         </div>
-        {/* this will be faded when no items are in basket */}
-        <Link href={"/checkout"} className="bg-black text-white p-4 rounded-lg">
-          Checkout
-        </Link>
+        {numberOfItems === 0 ? (
+          <div
+            className="bg-black/30 text-white p-4 rounded-lg"
+          >
+            Checkout
+          </div>
+        ) : (
+          <Link
+            href={"/checkout"}
+            className="bg-black text-white p-4 rounded-lg"
+          >
+            Checkout
+          </Link>
+        )}
       </div>
     </footer>
   );

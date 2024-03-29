@@ -61,32 +61,32 @@ const Sidebar = ({
         >
           <li
             onClick={toggleSidebar}
-            className={`px-4 py-2 cursor-pointer rounded-lg hover:bg-black hover:text-white w-full flex justify-end -translate-x-32 ${
-              isOpen ? "text-black -translate-x-0" : "text-white"
+            className={`px-4 py-2 cursor-pointer rounded-lg hover:bg-black hover:text-white w-full flex justify-end -translate-x-full ${
+              isOpen ? "text-black translate-x-0" : "text-white"
             } transition-all duration-500 ease-in-out`}
           >
             <Link href={"/women"}>Women</Link>
           </li>
           <li
             onClick={toggleSidebar}
-            className={`px-4 py-2 cursor-pointer rounded-lg hover:bg-black hover:text-white w-full flex justify-end -translate-x-32 ${
-              isOpen ? "text-black -translate-x-0" : "text-white"
+            className={`px-4 py-2 cursor-pointer rounded-lg hover:bg-black hover:text-white w-full flex justify-end -translate-x-full ${
+              isOpen ? "text-black translate-x-0" : "text-white"
             } transition-all duration-500 ease-in-out`}
           >
             <Link href={"/men"}>Men</Link>
           </li>
           <li
             onClick={toggleSidebar}
-            className={`px-4 py-2 cursor-pointer rounded-lg hover:bg-black hover:text-white w-full flex justify-end -translate-x-32 ${
-              isOpen ? "text-black -translate-x-0" : "text-white"
+            className={`px-4 py-2 cursor-pointer rounded-lg hover:bg-black hover:text-white w-full flex justify-end -translate-x-full ${
+              isOpen ? "text-black translate-x-0" : "text-white"
             } transition-all duration-500 ease-in-out`}
           >
             <Link href={"/accessories"}>Accessories</Link>
           </li>
           <li
             onClick={toggleSidebar}
-            className={`px-4 py-2 cursor-pointer rounded-lg hover:bg-black hover:text-white w-full flex justify-end -translate-x-32 ${
-              isOpen ? "text-black -translate-x-0" : "text-white"
+            className={`px-4 py-2 cursor-pointer rounded-lg hover:bg-black hover:text-white w-full flex justify-end -translate-x-full ${
+              isOpen ? "text-black translate-x-0" : "text-white"
             } transition-all duration-500 ease-in-out`}
           >
             <Link href={"/home"}>Home</Link>

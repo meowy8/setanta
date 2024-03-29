@@ -67,7 +67,7 @@ const Basket = () => {
     <main className="relative top-20 ">
       <h1 className="ovo m-2 text-3xl">Basket</h1>
       <div className="pb-24 flex flex-col items-center">
-        {basketItems.length > 0 &&
+        {basketItems.length > 0 ?
           basketItems.map((product: Product) => (
             <BasketItem
               key={product.id}
@@ -81,9 +81,9 @@ const Basket = () => {
               quantity={product.quantity}
               type={product.type}
             />
-          ))}
+          )) : <p className="text-lg m-10 italic">Your basket is empty</p>}
       </div>
-      <BasketFooter basketTotal={basketTotal} />
+      <BasketFooter basketTotal={basketTotal} numberOfItems={basketItems.length} />
     </main>
   );
 };
